@@ -24,4 +24,36 @@ namespace app1
             return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height})";
         }
     }
+
+    public class LiquidPressure: Pressure  
+    {
+        public string LiquidType {  get; set; }
+        public double Density { get; set; }
+
+        public LiquidPressure(DateTime date, double height, int value, string liquidtype, double density) : base(date, height, value)
+        {
+            LiquidType = liquidtype;
+            Density = density;
+        }
+        public override string ToString()
+        {
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}, жидкость: {LiquidType}, плотность жидкости)";
+        }
+    }
+
+    public class GasPressure : Pressure
+    {
+        public string GasType { get; set; }
+        public bool IsInert {  get; set; }
+        public GasPressure(DateTime date, double height, int value, string gastype, bool isinert) : base(date, height, value)
+        {
+            GasType = gastype;
+            IsInert = isinert;
+        }
+        public override string ToString()
+        {
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}, газ: {GasType}, инертный: {IsInert})";
+        }
+    }
+
 }
