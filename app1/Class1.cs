@@ -28,16 +28,16 @@ namespace app1
     public class LiquidPressure: Pressure  
     {
         public string LiquidType {  get; set; }
-        public double Density { get; set; }
+        public double Volume { get; set; }
 
-        public LiquidPressure(DateTime date, double height, int value, string liquidtype, double density) : base(date, height, value)
+        public LiquidPressure(DateTime date, double height, int value, string liquidtype, double volume) : base(date, height, value)
         {
             LiquidType = liquidtype;
-            Density = density;
+            Volume = volume;
         }
         public override string ToString()
         {
-            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}, жидкость: {LiquidType}, плотность жидкости)";
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}; жидкость: {LiquidType}, объем жидкости: {Volume})";
         }
     }
 
@@ -52,7 +52,7 @@ namespace app1
         }
         public override string ToString()
         {
-            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}, газ: {GasType}, инертный: {IsInert})";
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}; газ: {GasType}, инертный: {IsInert})";
         }
     }
 
