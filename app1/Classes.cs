@@ -37,7 +37,8 @@ namespace app1
         }
         public override string ToString()
         {
-            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}; жидкость: {LiquidType}, объем жидкости: {Volume})";
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height};" +
+                $"жидкость: {LiquidType}, объем жидкости: {Volume})";
         }
     }
 
@@ -52,7 +53,8 @@ namespace app1
         }
         public override string ToString()
         {
-            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height}; газ: {GasType}, инертный: {IsInert})";
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height};" +
+                $"газ: {GasType}, инертный: {IsInert})";
         }
     }
 
