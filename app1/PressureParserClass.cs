@@ -16,43 +16,44 @@ namespace app1
             return text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        private static (DateTime date, double height, int value) ParseBaseParameters(string[] parts)
+        private static (DateTime date, double height, int value, string device) ParseBaseParameters(string[] parts)
         {
             DateTime date = DateTime.ParseExact(parts[0], DateFormat, null);
             double height = double.Parse(parts[1]);
             int value = int.Parse(parts[2]);
+            string device = parts[3];
 
-            return (date, height, value);
+            return (date, height, value, device);
         }
 
         private static Pressure ParsePressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            return new Pressure(date, height, value);
+            return new Pressure(date, height, value, device);
         }
 
         private static LiquidPressure ParseLiquidPressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            string liquidType = parts[3];
-            double volume = double.Parse(parts[4]);
+            string liquidType = parts[4];
+            double volume = double.Parse(parts[5]);
 
-            return new LiquidPressure(date, height, value, liquidType, volume);
+            return new LiquidPressure(date, height, value, liquidType, volume, device);
         }
 
         private static GasPressure ParseGasPressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            string gasType = parts[3];
-            bool isInert = parts[4] == InertGasIndicator;
+            string gasType = parts[4];
+            bool isInert = parts[5] == InertGasIndicator;
 
-            return new GasPressure(date, height, value, gasType, isInert);
+            return new GasPressure(date, height, value, gasType, isInert, device);
         }
 
         private static string DeterminePressureType(string[] parts)
