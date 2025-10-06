@@ -55,6 +55,16 @@ namespace app1
             return new GasPressure(date, height, value, gasType, isInert);
         }
 
+        private static AtmosphericPressure ParseAtmosphericPressure(string text)
+        {
+            string[] parts = SplitText(text);
+            var (date, height, value) = ParseBaseParameters(parts);
+
+            double temperature = double.Parse(parts[3]);
+
+            return new AtmosphericPressure(date, height, value, temperature);
+        }
+
         private static string DeterminePressureType(string[] parts)
         {
             if (parts.Length == 3)
@@ -63,11 +73,21 @@ namespace app1
             }
             else if (parts.Length == 5)
             {
-                return double.TryParse(parts[4], out _) ?
-                    "Liquid" : "Gas";
+                if (double.TryParse(parts[3], out _) && double.TryParse(parts[4], out _))
+                {
+                    return "Atmospheric";
+                }
+                else if (double.TryParse(parts[4], out _))
+                {
+                    return "Liquid";
+                }
+                else
+                {
+                    return "Gas";
+                }
             }
 
-            return "Unknown";
+            return null;
         }
 
         public static Pressure ParseVariousPressure(string text)
@@ -83,6 +103,8 @@ namespace app1
                     return ParseLiquidPressure(text);
                 case "Gas":
                     return ParseGasPressure(text);
+                case "Atmospheric":
+                    return ParseAtmosphericPressure(text);
             }
             return null;
         }

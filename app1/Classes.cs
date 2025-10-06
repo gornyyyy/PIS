@@ -58,4 +58,18 @@ namespace app1
         }
     }
 
+    public class AtmosphericPressure : Pressure
+    {
+        public double Temperature { get; set; }
+        public AtmosphericPressure(DateTime date, double height, int value, double temperature) : base (date, height, value)
+        {
+            Temperature = temperature;
+        }
+
+        public override string ToString()
+        {
+            return $"Давление: {Value} Па (дата: {Date:yyyy.MM.dd}, высота: {Height};" +
+                $"температура воздуха: {Temperature}";
+        }
+    }
 }

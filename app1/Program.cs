@@ -10,6 +10,7 @@ namespace app1
 {
     internal class Program
     {
+        
         private const string FilePath = @"C:\Users\gorno\OneDrive\Рабочий стол\student\3 семестр\ПИС\PIS\app1\Pressures.txt";
 
         static void Main(string[] args)
