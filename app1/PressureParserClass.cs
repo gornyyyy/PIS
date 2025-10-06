@@ -16,78 +16,74 @@ namespace app1
             return text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        private static (DateTime date, double height, int value) ParseBaseParameters(string[] parts)
+        private static (DateTime date, double height, int value, string device) ParseBaseParameters(string[] parts)
         {
             DateTime date = DateTime.ParseExact(parts[0], DateFormat, null);
             double height = double.Parse(parts[1]);
             int value = int.Parse(parts[2]);
+            string device = parts[3];
 
-            return (date, height, value);
+            return (date, height, value, device);
         }
 
         private static Pressure ParsePressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            return new Pressure(date, height, value);
+            return new Pressure(date, height, value, device);
         }
 
         private static LiquidPressure ParseLiquidPressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            string liquidType = parts[3];
-            double volume = double.Parse(parts[4]);
+            string liquidType = parts[4];
+            double volume = double.Parse(parts[5]);
 
-            return new LiquidPressure(date, height, value, liquidType, volume);
+            return new LiquidPressure(date, height, value, liquidType, volume, device);
         }
 
         private static GasPressure ParseGasPressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            string gasType = parts[3];
-            bool isInert = parts[4] == InertGasIndicator;
+            string gasType = parts[4];
+            bool isInert = parts[5] == InertGasIndicator;
 
-            return new GasPressure(date, height, value, gasType, isInert);
+            return new GasPressure(date, height, value, gasType, isInert, device);
         }
 
         private static AtmosphericPressure ParseAtmosphericPressure(string text)
         {
             string[] parts = SplitText(text);
-            var (date, height, value) = ParseBaseParameters(parts);
+            var (date, height, value, device) = ParseBaseParameters(parts);
 
-            double temperature = double.Parse(parts[3]);
+            double temperature = double.Parse(parts[4]);
 
-            return new AtmosphericPressure(date, height, value, temperature);
+            return new AtmosphericPressure(date, height, value, device, temperature);
         }
 
         private static string DeterminePressureType(string[] parts)
         {
-            if (parts.Length == 3)
+            if (parts.Length == 4)
             {
                 return "Base";
             }
             else if (parts.Length == 5)
             {
-                if (double.TryParse(parts[3], out _) && double.TryParse(parts[4], out _))
-                {
-                    return "Atmospheric";
-                }
-                else if (double.TryParse(parts[4], out _))
-                {
-                    return "Liquid";
-                }
-                else
-                {
-                    return "Gas";
-                }
+                return "Atmospheric";
             }
 
-            return null;
+            else if (parts.Length == 6)
+            {
+                return double.TryParse(parts[4], out _) ?
+                "Liquid" : "Gas";
+            }
+
+            return "Unknown";
         }
 
         public static Pressure ParseVariousPressure(string text)
@@ -97,16 +93,18 @@ namespace app1
 
             switch (pressureType)
             {
-                case "Base":
-                    return ParsePressure(text);
-                case "Liquid":
-                    return ParseLiquidPressure(text);
-                case "Gas":
-                    return ParseGasPressure(text);
-                case "Atmospheric":
-                    return ParseAtmosphericPressure(text);
+            case "Base":
+                return ParsePressure(text);
+            case "Liquid":
+                return ParseLiquidPressure(text);
+            case "Gas":
+                return ParseGasPressure(text);
+            case "Atmospheric":
+                return ParseAtmosphericPressure(text);
+            default:
+                return null;
             }
-            return null;
+            
         }
     }
 }
