@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace app1
 {
@@ -27,9 +23,9 @@ namespace app1
         }
     }
 
-    public class LiquidPressure: Pressure  
+    public class LiquidPressure : Pressure
     {
-        public string LiquidType {  get; set; }
+        public string LiquidType { get; set; }
         public double Volume { get; set; }
 
         public LiquidPressure(DateTime date, double height, int value, string liquidtype, double volume, string device) : base(date, height, value, device)
@@ -47,7 +43,7 @@ namespace app1
     public class GasPressure : Pressure
     {
         public string GasType { get; set; }
-        public bool IsInert {  get; set; }
+        public bool IsInert { get; set; }
         public GasPressure(DateTime date, double height, int value, string gastype, bool isinert, string device) : base(date, height, value, device)
         {
             GasType = gastype;
@@ -63,7 +59,7 @@ namespace app1
     public class AtmosphericPressure : Pressure
     {
         public double Temperature { get; set; }
-        public AtmosphericPressure(DateTime date, double height, int value, string device, double temperature) : base (date, height, value, device)
+        public AtmosphericPressure(DateTime date, double height, int value, string device, double temperature) : base(date, height, value, device)
         {
             Temperature = temperature;
         }

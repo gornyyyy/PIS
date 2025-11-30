@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/gorno/OneDrive/Рабочий стол/student/3 семестр/ПИС/PIS/app1",
+  "source_base_path": "C:/Users/Ganiev Egor/Desktop/УЧЕБА(/3 СЕМЕСТР/пис/PIS/app1",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "ZcRFJgNhvhM6kAH28Vkb5TxxGPe7FlftmernEpHWKBw="
+          "hash": "STqPrgEySCButoJ/4Rw8+j8Kl8zBrynBNGMnKLeBnA0="
         }
       },
       "is_incremental": false,
@@ -52,84 +52,12 @@
       "version": ""
     },
     {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/app1.AtmosphericPressure.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/app1.AtmosphericPressure.html",
-          "hash": "/iUQpiRPPSaIWNRrBWL0s5bBNSADVGfWsW9kqyipoOU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/app1.GasPressure.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/app1.GasPressure.html",
-          "hash": "y3sUfVr+yRkp+6EqTy18fl4gC59odA7B6I5yDWqAVbI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/app1.LiquidPressure.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/app1.LiquidPressure.html",
-          "hash": "C0W7M7Vuk5uEo4ajIUpqBo8fCqWSSYkU3+rj7lgZgr8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/app1.Pressure.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/app1.Pressure.html",
-          "hash": "pnsfpCmswFETd8TwrJH+fDka/K0oJmyxfgFQ4ZqpLow="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/app1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/app1.html",
-          "hash": "sGO+WUoWbB3m43nFZMIlvuGd/eZwmOJlu2aTHBnd8ds="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "obj/api/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "ivRqQSZG656P26wPvSVlBUVhUWpy/6RsDLlkp2bumKI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "Oa9PuD4E1hvZnCkVjUgzNBX6S00Zo5YilamTERTZo54="
+          "hash": "54i+GjGkcHU6vLaH03VxwxeqtQ0qatdslc+BlbETck0="
         }
       },
       "is_incremental": false,
@@ -140,23 +68,17 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 5,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
@@ -171,7 +93,7 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
